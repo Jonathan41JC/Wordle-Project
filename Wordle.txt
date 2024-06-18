@@ -1,0 +1,56 @@
+import java.util.*;
+public class MyProgram
+{
+    public static void main(String[] args)
+    {
+        
+        String green="\u001B[32m";
+        String yellow="\u001B[33m";
+        String reset="\u001B[0m";
+        Scanner scanner = new Scanner(System.in);
+        String word="";
+        int i=0;
+        String [] arrWords= {"table","apple","words","hello","audio","hotel","homer","arise","rules","route","stood","today","dotes","champ","morph","thick","weary","right","crazy"};
+        String targetWord=arrWords[(int)(Math.random()*arrWords.length)];
+        while(i<6)
+        {
+            System.out.println("Guess the word!");
+            word=scanner.nextLine();
+            if(word.equals(targetWord))
+            {
+                System.out.println(green+word+reset);
+                break;
+            }
+            for(int j=0;j<5;j++)   
+            {
+                if(word.substring(j,j+1).equals(targetWord.substring(j,j+1)))
+                {
+                    System.out.print(green+word.substring(j,j+1)+reset);
+                }
+                else if(targetWord.contains(word.substring(j,j+1)))
+                {
+                    System.out.print(yellow+word.substring(j,j+1)+reset);
+                }
+                else
+                {
+                    System.out.print(word.substring(j,j+1));
+                }
+            }
+         
+            System.out.println();
+            i++;
+
+            
+        }
+        if(targetWord.equals(word))
+        {
+            System.out.println("YOU GOT IT!!!");
+        }
+        if(!(word.equals(targetWord)))
+        {
+            System.out.println("YOU LOSE :(, THE WORD WAS: "+targetWord);
+        }
+        
+        
+    }
+}
